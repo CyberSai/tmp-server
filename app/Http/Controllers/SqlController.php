@@ -8,6 +8,7 @@ use App\Mssql;
 use App\Mysql;
 use App\Postgresql;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SqlController extends Controller
 {
@@ -32,12 +33,15 @@ class SqlController extends Controller
     public function store(Request $request)
     {
         $connection = $request->connection ?? 'postgresql';
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => "required|email|unique:{$connection}s",
             'password' => 'required|min:8',
         ]);
-        $user = $this->getModel($connection)::create($validated);
+        if ($validator->fails()) {
+            return $validator->errors()->toJson();
+        }
+        $user = $this->getModel($connection)::create($validator->validated());
         return response()->json($user, 201);
     }
 
@@ -66,11 +70,15 @@ class SqlController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'password' => 'required|min:8',
             'connection' => 'nullable|in:mysql,mssql,mongodb,mariadb,postgresql'
         ]);
+        if ($validator->fails()) {
+            return $validator->errors()->toJson();
+        }
+        $validated = $validator->validated();
         $user = $this->getModel($validated['connection'] ?? 'postgresql')::find($id);
         if ($user) {
             $user->update($validated);

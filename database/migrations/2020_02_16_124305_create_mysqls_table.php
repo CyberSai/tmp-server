@@ -13,7 +13,7 @@ class CreateMysqlsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mysqls', function (Blueprint $table) {
+        Schema::connection('mysql')->create('mysqls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();

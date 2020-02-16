@@ -39,7 +39,7 @@ class SqlController extends Controller
             'password' => 'required|min:8',
         ]);
         if ($validator->fails()) {
-            return $validator->errors()->toJson();
+            return response()->json($validator->errors());
         }
         $user = $this->getModel($connection)::create($validator->validated());
         return response()->json($user, 201);
@@ -76,7 +76,7 @@ class SqlController extends Controller
             'connection' => 'nullable|in:mysql,mssql,mongodb,mariadb,postgresql'
         ]);
         if ($validator->fails()) {
-            return $validator->errors()->toJson();
+            return response()->json($validator->errors(), 400);
         }
         $validated = $validator->validated();
         $user = $this->getModel($validated['connection'] ?? 'postgresql')::find($id);

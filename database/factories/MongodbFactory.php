@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Mongodb;
-use App\User;
+use App\Postgresql;
 use Faker\Generator as Faker;
 
 $factory->define(Mongodb::class, function (Faker $faker) {
-    return factory(User::class)->raw();
+    return factory(Postgresql::class)->raw();
 });

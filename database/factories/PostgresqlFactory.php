@@ -7,5 +7,9 @@ use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Postgresql::class, function (Faker $faker) {
-    return factory(User::class)->raw();
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'password' => $faker->randomNumber(8)
+    ];
 });

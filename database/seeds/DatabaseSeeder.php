@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+         $this->call(MariadbSeeder::class);
+         $this->call(MongodbSeeder::class);
+         $this->call(MssqlSeeder::class);
+         $this->call(MysqlSeeder::class);
+         $this->call(PostgresqlSeeder::class);
     }
 }

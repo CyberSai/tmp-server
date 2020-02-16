@@ -31,13 +31,13 @@ class SqlController extends Controller
      */
     public function store(Request $request)
     {
+        $connection = $request->connection ?? 'postgresql';
         $validated = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
+            'email' => "required|email|unique:{$connection}s",
             'password' => 'required|min:8',
-            'connection' => 'nullable|in:mysql,mssql,mongodb,mariadb,postgresql'
         ]);
-        $user = $this->getModel($validated['connection'] ?? 'postgresql')::create($validated);
+        $user = $this->getModel($connection)::create($validated);
         return response()->json($user, 201);
     }
 
@@ -68,11 +68,10 @@ class SqlController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
             'password' => 'required|min:8',
             'connection' => 'nullable|in:mysql,mssql,mongodb,mariadb,postgresql'
         ]);
-        $user = $this->getModel($validated['connection'])::find($id);
+        $user = $this->getModel($validated['connection'] ?? 'postgresql')::find($id);
         if ($user) {
             $user->update($validated);
             return $user;

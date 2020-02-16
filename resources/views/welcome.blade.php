@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Trans PM
+                    Trans Process Monitor
                 </div>
             </div>
         </div>

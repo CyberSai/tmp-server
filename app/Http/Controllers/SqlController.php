@@ -37,7 +37,7 @@ class SqlController extends Controller
             'password' => 'required|min:8',
             'connection' => 'nullable|in:mysql,mssql,mongodb,mariadb,postgresql'
         ]);
-        $user = $this->getModel($validated['connection'])::create($validated);
+        $user = $this->getModel($validated['connection'] ?? 'postgresql')::create($validated);
         return response()->json($user, 201);
     }
 

@@ -29,6 +29,6 @@ class CreateMariadbsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mariadbs');
+        Schema::connection('maria')->dropIfExists('mariadbs');
     }
 }

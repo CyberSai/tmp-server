@@ -29,6 +29,6 @@ class CreateMongodbsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mongodbs');
+        Schema::connection('mongodb')->dropIfExists('mongodbs');
     }
 }

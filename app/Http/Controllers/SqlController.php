@@ -20,7 +20,7 @@ class SqlController extends Controller
     public function index(Request $request)
     {
         $connection = $request->query('connection', 'postgresql');
-        $users = $this->getModel($connection)::paginate(5);
+        $users = $this->getModel($connection)::all();
         return $users;
     }
 

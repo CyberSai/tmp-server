@@ -39,11 +39,11 @@ class SqlController extends Controller
         } else if ($connection == 'mariadb') {
             $cn = 'maria';
             $db = $connection;
-        } else if ($connection == 'mongodb') {
-            $cn = $connection;
+        } else if ($connection == 'postgresql') {
+            $cn = 'pgsql';
             $db = $connection;
         } else {
-            $cn = 'pgsql';
+            $cn = $connection;
             $db = $connection;
         }
         $validator = Validator::make($request->all(), [

@@ -7,6 +7,7 @@ use App\Mongodb;
 use App\Mssql;
 use App\Mysql;
 use App\Postgresql;
+use App\Sqlite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -124,6 +125,8 @@ class SqlController extends Controller
             return Mariadb::class;
         } else if ($connection == 'mssql') {
             return Mssql::class;
+        } else if ($connection == 'sqlite') {
+            return Sqlite::class;
         } else {
             return Postgresql::class;
         }

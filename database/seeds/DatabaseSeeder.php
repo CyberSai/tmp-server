@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
          $this->call(MssqlSeeder::class);
          $this->call(MysqlSeeder::class);
          $this->call(PostgresqlSeeder::class);
+         $this->call(SqliteSeeder::class);
     }
 }

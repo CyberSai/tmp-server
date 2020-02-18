@@ -13,7 +13,7 @@ class CreateMariadbsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('maria')->create('mariadbs', function (Blueprint $table) {
+        Schema::connection('mariadb')->create('mariadbs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -29,6 +29,6 @@ class CreateMariadbsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('maria')->dropIfExists('mariadbs');
+        Schema::connection('mariadb')->dropIfExists('mariadbs');
     }
 }

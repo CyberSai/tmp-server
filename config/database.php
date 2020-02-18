@@ -63,7 +63,7 @@ return [
             ]) : [],
         ],
 
-        'maria' => [
+        'mariadb' => [
             'driver' => 'mysql',
             'url' => env('JAWSDB_MARIA_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),

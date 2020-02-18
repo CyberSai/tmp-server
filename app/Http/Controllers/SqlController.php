@@ -36,9 +36,6 @@ class SqlController extends Controller
         if ($connection == 'mssql') {
             $cn = 'pgsql';
             $db = $connection;
-        } else if ($connection == 'mariadb') {
-            $cn = 'maria';
-            $db = $connection;
         } else if ($connection == 'postgresql') {
             $cn = 'pgsql';
             $db = $connection;

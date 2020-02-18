@@ -34,13 +34,13 @@ class SqlController extends Controller
     {
         $connection = $request->connection ?? 'postgresql';
         if ($connection == 'mssql') {
-            $cn = 'postgresql';
+            $cn = 'pgsql';
             $db = $connection;
         } else if ($connection == 'mariadb') {
             $cn = 'maria';
             $db = $connection;
         } else {
-            $cn = $connection;
+            $cn = 'pgsql';
             $db = $connection;
         }
         $validator = Validator::make($request->all(), [

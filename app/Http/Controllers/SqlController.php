@@ -33,9 +33,19 @@ class SqlController extends Controller
     public function store(Request $request)
     {
         $connection = $request->connection ?? 'postgresql';
+        if ($connection == 'mssql') {
+            $cn = 'postgresql';
+            $db = $connection;
+        } else if ($connection == 'mariadb') {
+            $cn = 'maria';
+            $db = $connection;
+        } else {
+            $cn = $connection;
+            $db = $connection;
+        }
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
-            'email' => "required|email|unique:{$connection}s",
+            'email' => "required|email|unique:{$cn}.{$db}s",
             'password' => 'required|min:8',
         ]);
         if ($validator->fails()) {

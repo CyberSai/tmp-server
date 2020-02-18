@@ -11,20 +11,24 @@ A Tranaction Processing Monitor is a script that route user request to various d
 * Maria DB
 * Mongo DB
 * MsSQL
+* Sqlite
 
 ## Demo
 
-Default users are postgresql
-[PostgreSQL Users](https://trans-pm.herokuapp.com/api/users)
+Default users are PostgreSQL users
+[view](https://trans-pm.herokuapp.com/api/users)
 
-MySQL user
-[MySQL Users](https://trans-pm.herokuapp.com/api/users?connection=mysql)
+MySQL users
+[view](https://trans-pm.herokuapp.com/api/users?connection=mysql)
 
-Maria DB user
-[Maria DB Users](https://trans-pm.herokuapp.com/api/users?connection=mariadb)
+Maria DB users
+[view](https://trans-pm.herokuapp.com/api/users?connection=mariadb)
 
-Mongo Db user
-[Mongo DB Users](https://trans-pm.herokuapp.com/api/users?connection=mongo)
+Mongo Db users
+[view](https://trans-pm.herokuapp.com/api/users?connection=mongo)
 
-MsSQL user
-[MsSQL Users](https://trans-pm.herokuapp.com/api/users?connection=mssql)
+MsSQL users
+[view](https://trans-pm.herokuapp.com/api/users?connection=mssql)
+
+Sqlite users
+[view](https://trans-pm.herokuapp.com/api/users?connection=sqlite)
